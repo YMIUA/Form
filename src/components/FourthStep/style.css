@@ -1,0 +1,34 @@
+.pictures{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input[name='animal']{
+    display:none;
+}
+.pictures>label{
+    cursor: pointer;
+    margin: 8px;
+}
+input[id="cat1"]:checked ~ .pictures label[for="cat1"] img,
+input[id="cat2"]:checked ~ .pictures label[for="cat2"] img,
+input[id="cat3"]:checked ~ .pictures label[for="cat3"] img,
+input[id="dog4"]:checked ~ .pictures label[for="dog4"] img{
+    border:4px solid #ff9800;
+    border-radius: 4px;
+}
+.valid{
+    color:red;
+    height: 50px;
+    justify-content: flex-start;
+}
+
+label{
+    display: inline-block;
+}
+label>img{
+    box-sizing: border-box;
+    width: 150px;
+    height: 150px;
+}

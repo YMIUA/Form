@@ -1,0 +1,22 @@
+.stepButton{
+    margin-bottom: 10px;
+}
+.stepButton>button{
+    background-color: #ffffff;
+    border: none;
+    width: 7vh;
+    height: 7vh;
+    margin: 0 6px;
+}
+button>img{
+    height: 7vh;
+}
+img[alt="leftArrow"]{
+    margin-right: 10px;
+}
+img[alt="rightArrow"]{
+    margin-left: 10px;
+}
+button>span{
+    font-size: 1.2rem;
+}
