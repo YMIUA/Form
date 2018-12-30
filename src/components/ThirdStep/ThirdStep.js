@@ -39,9 +39,9 @@ class ThirdStep extends Component {
 
     render() {
         return (
-            <div className='third'>
+            <div className="third">
                 <p>3.Отметьте социальные сети</p>
-                <div className='socialNetwork'>
+                <div className="socialNetwork">
                     {socialNet.map((i)=>
                          <div key = {i}>
                             <div className="checkbox">
@@ -53,12 +53,12 @@ class ThirdStep extends Component {
                                 <span>{i}</span>
                             </div>
                              {this.state[i] ?
-                                 <input className='link'
+                                 <input className="link"
                                         type="text"
                                         name={i}
                                         placeholder={`Ваша страница в ${i}`}
                                         onBlur={this.setLinks}/>
-                                 :<div className='noneInput'/>}
+                                 :<div className="noneInput"/>}
                         </div>
                     )}
                 </div>

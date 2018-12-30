@@ -11,7 +11,6 @@ import Summary from './../Summary/Summary'
 export default class Form extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             stepNow: 1,
             nextStepValid: false,
@@ -35,7 +34,7 @@ export default class Form extends Component {
     reset = ()=> {
         this.setState({
             stepNow: 1,
-            validStep: 4,
+            nextStepValid: false,
             name: '',
             email: '',
             country: '',
@@ -46,7 +45,7 @@ export default class Form extends Component {
                 vk: false,
                 twitter: false,
                 ok: false,
-                links: []
+                links:[]
             },
             cat: '',
             finishForm: false
@@ -97,20 +96,22 @@ export default class Form extends Component {
         }
     };
 
-    getComponent = (componentsNumber) =>{
+    getComponent = (componentsNumber) => {
         switch (componentsNumber) {
-            case 1: return <FirstStep setName = {value => this.setName(value)}
-                                      setMail = {value => this.setMail(value)}
-                                      name={this.state.name}
-                                      email={this.state.email}
-                           />;
-            case 2: return <SecondStep setCountry = {value => this.setCountry(value)}
-                                       setCity = {value => this.setCity(value)}
-                                       setCountryId = {value => this.setCountryId(value)}
-                                       country = {this.state.country}
-                                       countryId = {this.state.countryId}
-                                       city = {this.state.city}
-                            />;
+            case 1: return (
+                <FirstStep setName = {value => this.setName(value)}
+                           setMail = {value => this.setMail(value)}
+                           name={this.state.name}
+                           email={this.state.email}
+                />);
+            case 2: return (
+                <SecondStep setCountry = {value => this.setCountry(value)}
+                            setCity = {value => this.setCity(value)}
+                            setCountryId = {value => this.setCountryId(value)}
+                            country = {this.state.country}
+                            countryId = {this.state.countryId}
+                            city = {this.state.city}
+                />);
             case 3: return <ThirdStep setSocialNetwork = {value => this.setSocialNetwork(value)}/>;
             case 4: return <FourthStep setCatPicture = {value => this.setCatPicture(value)}/>;
             default: return <div/>

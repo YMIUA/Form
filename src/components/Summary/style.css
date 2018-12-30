@@ -32,9 +32,10 @@
     color: blue;
 }
 .picture{
-    margin: 24px;
+    margin: auto 10px;
     width: 200px;
-    height: 200px;
+    height: 195px;
+    overflow: hidden;
 }
 .picture img{
     width: 100%;

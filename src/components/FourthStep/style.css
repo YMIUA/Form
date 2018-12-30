@@ -1,10 +1,14 @@
+.info{
+    width: 60%;
+}
 .pictures{
     padding: 10px;
-    display: flex;
+    display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
-input[name='animal']{
+input[name="animal"]{
     display:none;
 }
 .pictures>label{
@@ -23,12 +27,11 @@ input[id="dog4"]:checked ~ .pictures label[for="dog4"] img{
     height: 50px;
     justify-content: flex-start;
 }
-
 label{
-    display: inline-block;
+    width: 180px;
+    height: 180px;
 }
 label>img{
-    box-sizing: border-box;
     width: 150px;
     height: 150px;
 }

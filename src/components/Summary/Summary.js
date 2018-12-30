@@ -7,7 +7,7 @@ export default class Summary extends Component {
         this.catPicture=require('./../../img/'+this.props.state.cat+".jpg")
     }
     render() {
-        return <div className='summary'>
+        return <div className="summary">
             <div className="card">
                 <div className="info">
                     <div className="mainInfo">
@@ -28,7 +28,9 @@ export default class Summary extends Component {
                     <img src={this.catPicture} alt={this.props.state.cat}/>
                 </div>
             </div>
-            <button className="reset" onClick={this.props.reset()}>Пройти заново</button>
+            <button className="reset" onClick={this.props.reset()}>
+                Пройти заново
+            </button>
         </div>
     }
 }

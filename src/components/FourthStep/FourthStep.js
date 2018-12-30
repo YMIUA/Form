@@ -28,7 +28,7 @@ class ThirdStep extends Component {
 
     render() {
         return (
-            <div className='fourth' onChange={this.change}>
+            <div className="fourth" onChange={this.change}>
                 <p>4.Выберите любимого котика</p>
                 <input type="radio" id="cat1"  name="animal" value="cat1"/>
                 <input type="radio" id="cat2"  name="animal" value="cat2"/>
@@ -40,7 +40,7 @@ class ThirdStep extends Component {
                     <label htmlFor="cat3"><img src={cat3} alt="cat3"/></label>
                     <label htmlFor="dog4"><img src={dog4} alt="dog4"/></label>
                 </div>
-                <div className='valid'>{this.state.isItCat||"Ви выбрали собачку. А надо котика."}</div>
+                <div className="valid">{this.state.isItCat || 'Ви выбрали собачку. А надо котика.'}</div>
             </div>
         );
     }

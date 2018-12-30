@@ -15,12 +15,12 @@ class SecondStep extends Component {
     }
 
     onSelectedCountry = e => {
-        this.setState({countryId:e.target.value});
-        this.props.setCountryId(e.target.value);
-        this.props.setCountry(COUNTRIES[e.target.value]);
+        this.setState({countryId: e.target.value} );
+        this.props.setCountryId( e.target.value );
+        this.props.setCountry( COUNTRIES[e.target.value] );
     };
 
-    onSelectedCity = e => this.props.setCity(e.target.value);
+    onSelectedCity = e => this.props.setCity( e.target.value );
 
     render() {
         let countriesOptions=[];
@@ -36,15 +36,23 @@ class SecondStep extends Component {
         }
 
         return (
-            <div className='second'>
+            <div className="second">
                 <p>2.Выберите страну и город</p>
-                <select size='1' name='country' defaultValue={this.props.country===''&&'countryes'} onChange={this.onSelectedCountry}>
-                    <option selected disabled value='countryes' >Страна</option>
+                <select size="1"
+                        name="country"
+                        defaultValue={this.props.country==='' && 'countryes'}
+                        onChange={this.onSelectedCountry}
+                        >
+                    <option selected disabled value="countryes" >Страна</option>
                     {countriesOptions}
                 </select>
-                {this.props.country === '' ? <div className={'nullSelect'}/> :
-                <select size='1' name='sity' defaultValue={this.props.city===''&&'cities'} onChange={this.onSelectedCity}>
-                    <option selected disabled value='cities' >Город</option>
+                {this.props.country === '' ? <div className={"nullSelect"}/> :
+                <select size="1"
+                        name="sity"
+                        defaultValue={this.props.city==='' && 'cities'}
+                        onChange={this.onSelectedCity}
+                        >
+                    <option selected disabled value="cities" >Город</option>
                     {citiesOptions}
                 </select>
                 }
