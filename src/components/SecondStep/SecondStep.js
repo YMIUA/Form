@@ -5,13 +5,9 @@ const COUNTRIES = require('./../../countries.json');
 const CITY = require('./../../cities.json');
 
 class SecondStep extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            countryId:this.props.countryId
-        };
-        this.onSelectedCountry = this.onSelectedCountry.bind(this);
-        this.onSelectedCity = this.onSelectedCity.bind(this);
+    state = {
+        
+        countryId: this.props.countryId
     }
 
     onSelectedCountry = e => {
@@ -40,19 +36,19 @@ class SecondStep extends Component {
                 <p>2.Выберите страну и город</p>
                 <select size="1"
                         name="country"
-                        defaultValue={this.props.country==='' && 'countryes'}
+                        defaultValue={this.props.country === '' && 'countryes'}
                         onChange={this.onSelectedCountry}
                         >
-                    <option selected disabled value="countryes" >Страна</option>
+                    <option disabled value="countryes" >Страна</option>
                     {countriesOptions}
                 </select>
-                {this.props.country === '' ? <div className={"nullSelect"}/> :
+                {this.props.country === '' ? <div className="nullSelect"/> :
                 <select size="1"
                         name="sity"
-                        defaultValue={this.props.city==='' && 'cities'}
+                        defaultValue={this.props.city === '' && 'cities'}
                         onChange={this.onSelectedCity}
                         >
-                    <option selected disabled value="cities" >Город</option>
+                    <option disabled value="cities" >Город</option>
                     {citiesOptions}
                 </select>
                 }

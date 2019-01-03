@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
 import './style.css'
 
-const socialNet = ['Facebook','VK','Twitter','Ok'];
+const SOCIAL_NET = ['Facebook','VK','Twitter','Ok'];
 
 class ThirdStep extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            facebook: false,
-            vk: false,
-            twitter: false,
-            ok: false,
-            links:[]
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.setLinks = this.setLinks.bind(this);
+        this.state = this.props.socialNetwork
     }
 
     handleChange = e => {
@@ -25,40 +16,43 @@ class ThirdStep extends Component {
         }));
     };
 
-    setLinks = e => {
-        const name = e.target.name;
-        const url = e.target.value;
-        this.setState(prevState => {
-            links: prevState.links.push({name:name, url:url})
-        });
-    };
+    setUrl = e => {
+        let id = e.target.id.slice(5);
+        let newLinks = [...this.state.links];
+        Object.assign(newLinks[id], {url: e.target.value})
+        this.setState({links: newLinks});
+    }
 
     componentWillUnmount(){
         this.props.setSocialNetwork(this.state);
     }
 
     render() {
+        console.log(typeof this.state.links[0].url);
         return (
             <div className="third">
                 <p>3.Отметьте социальные сети</p>
                 <div className="socialNetwork">
-                    {socialNet.map((i)=>
-                         <div key = {i}>
+                    {SOCIAL_NET.map( (item, index) =>
+                         <div key = {item}>
                             <div className="checkbox">
-                                <input name={'checkbox'+i}
+                                <input name={'checkbox' + item}
                                        type="checkbox"
-                                       checked={this.state[i]}
+                                       checked={this.state[item]}
                                        onChange={this.handleChange}
                                 />
-                                <span>{i}</span>
+                                <span>{item}</span>
                             </div>
-                             {this.state[i] ?
+                             {this.state[item] ?
                                  <input className="link"
                                         type="text"
-                                        name={i}
-                                        placeholder={`Ваша страница в ${i}`}
-                                        onBlur={this.setLinks}/>
-                                 :<div className="noneInput"/>}
+                                        name={item}
+                                        id={`input${index}`}
+                                        value={this.state.links[index].url}
+                                        onChange={this.setUrl}
+                                        placeholder={`Ваша страница в ${item}`}
+                                 />:
+                                 <div className="noneInput"/>}
                         </div>
                     )}
                 </div>

@@ -4,7 +4,7 @@ import "./style.css";
 export default class Summary extends Component {
     constructor(props){
         super(props);
-        this.catPicture=require('./../../img/'+this.props.state.cat+".jpg")
+        this.catPicture=require(`./../../img/${this.props.state.cat}.jpg`)
     }
     render() {
         return <div className="summary">
@@ -14,13 +14,17 @@ export default class Summary extends Component {
                         <h1>{this.props.state.name}</h1>
                         <p>{this.props.state.email}</p>
                     </div>
-                    <p>{this.props.state.city+', '+this.props.state.country}</p>
+                    <p>{`${this.props.state.city}, ${this.props.state.country}`}</p>
                     <div className="socialNetwork">
-                        {this.props.state.socialNetwork.links.map( i => {
-                            return <div key={i}>
-                                <span className="socialName">{i.name+': '}</span>
-                                <span className="socialLink">{i.url}</span>
-                            </div>
+                        {this.props.state.socialNetwork.links
+                            .filter(i => i.url !== '')
+                            .map( (item, index) => {
+                                return (
+                                    <div key={index}>
+                                        <span className="socialName">{item.name + ': '}</span>
+                                        <span className="socialLink">{item.url}</span>
+                                    </div>
+                                )
                         })}
                     </div>
                 </div>

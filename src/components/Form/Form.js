@@ -9,29 +9,42 @@ import FourthStep from './../FourthStep/FourthStep'
 import Summary from './../Summary/Summary'
 
 export default class Form extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            stepNow: 1,
-            nextStepValid: false,
-            name: '',
-            email: '',
-            country: '',
-            countryId: '',
-            city: '',
-            socialNetwork: {
-                facebook: false,
-                vk: false,
-                twitter: false,
-                ok: false,
-                links:[]
+    state = {
+        stepNow: 1,
+        nextStepValid: false,
+        name: '',
+        email: '',
+        country: '',
+        countryId: '',
+        city: '',
+        socialNetwork: {
+            facebook: false,
+            vk: false,
+            twitter: false,
+            ok: false,
+            links:[
+                {
+                    name: 'Facebook',
+                    url: ''
+                },
+                {
+                    name: 'VK',
+                    url: ''
+                },
+                {
+                    name: 'Twitter',
+                    url: ''
+                },
+                {
+                    name: 'Ok',
+                    url: ''
+                }]
             },
-            cat: '',
-            finishForm: false
-        };
+        cat: '',
+        finishForm: false
     };
 
-    reset = ()=> {
+    reset = () => {
         this.setState({
             stepNow: 1,
             nextStepValid: false,
@@ -45,51 +58,78 @@ export default class Form extends Component {
                 vk: false,
                 twitter: false,
                 ok: false,
-                links:[]
+                links:[
+                    {
+                        name: 'Facebook',
+                        url: ''
+                    },
+                    {
+                        name: 'VK',
+                        url: ''
+                    },
+                    {
+                        name: 'Twitter',
+                        url: ''
+                    },
+                    {
+                        name: 'Ok',
+                        url: ''
+                    }
+                ]
             },
             cat: '',
             finishForm: false
         });
     };
 
-    setMail = value => this.setState({email:value});
+    setMail = value => this.setState({email: value});
 
-    setName = value => this.setState({name:value});
+    setName = value => this.setState({name: value});
 
-    setCountry = value => this.setState({country:value});
+    setCountry = value => this.setState({country: value});
 
-    setCountryId = value => this.setState({countryId:value});
+    setCountryId = value => this.setState({countryId: value});
 
     setCity = value => this.setState({city: value});
 
-    setSocialNetwork = value => this.setState({socialNetwork:value});
+    setSocialNetwork = value => this.setState({socialNetwork: value});
 
-    setCatPicture = value => this.setState({cat:value});
+    setCatPicture = value => this.setState({cat: value});
 
     nextStep = () => this.setState({stepNow: this.state.stepNow + 1});
 
-    previousStep = () => this.setState({stepNow: this.state.stepNow-1});
+    previousStep = () => this.setState({stepNow: this.state.stepNow - 1});
 
     changeStep = e => {
-        return !isNaN(e.target.value) ? this.setState({stepNow: +e.target.value}) : null;
+        return !isNaN(e.target.value) ? 
+        this.setState({stepNow: + e.target.value}) : 
+        null;
     };
 
     finishForm = () => this.setState({finishForm: true});
 
     isNextButton = () => {
         switch (this.state.stepNow){
-            case 1: return (this.state.name.length !== 0) && (this.state.email.length !== 0);
-            case 2: return (this.state.country.length !== 0) && (this.state.city.length !== 0);
-            case 3: return true;
-            case 4: return this.state.cat.length !== 0;
-            default : return false
+            case 1: 
+                return (this.state.name.length !== 0) && 
+                       (this.state.email.length !== 0);
+            case 2: 
+                return (this.state.country.length !== 0) && 
+                       (this.state.city.length !== 0);
+            case 3: 
+                return true;
+            case 4: 
+                return this.state.cat.length !== 0;
+            default : 
+                return false
         }
     };
 
     getValidStep = () => {
         if(this.state.cat.length){
             return 5
-        }else if((this.state.country.length !== 0) && (this.state.city.length !== 0)){
+        }else if((this.state.country.length !== 0) && 
+                 (this.state.city.length !== 0)){
             return 3
         }else {
             return 2
@@ -112,13 +152,19 @@ export default class Form extends Component {
                             countryId = {this.state.countryId}
                             city = {this.state.city}
                 />);
-            case 3: return <ThirdStep setSocialNetwork = {value => this.setSocialNetwork(value)}/>;
-            case 4: return <FourthStep setCatPicture = {value => this.setCatPicture(value)}/>;
+            case 3: return <ThirdStep setSocialNetwork = {value => 
+                              this.setSocialNetwork(value)}
+                              socialNetwork = {this.state.socialNetwork}
+                           />;
+            case 4: return <FourthStep setCatPicture = {value => 
+                              this.setCatPicture(value)}
+                           />;
             default: return <div/>
         }
     };
 
     render() {
+        console.log(this.state);
         if(this.state.finishForm){
              return(
                  <Summary reset={() => this.reset}

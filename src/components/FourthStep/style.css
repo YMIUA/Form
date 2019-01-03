@@ -11,14 +11,14 @@
 input[name="animal"]{
     display:none;
 }
-.pictures>label{
+.pictures>div>label{
     cursor: pointer;
     margin: 8px;
 }
-input[id="cat1"]:checked ~ .pictures label[for="cat1"] img,
-input[id="cat2"]:checked ~ .pictures label[for="cat2"] img,
-input[id="cat3"]:checked ~ .pictures label[for="cat3"] img,
-input[id="dog4"]:checked ~ .pictures label[for="dog4"] img{
+input[id="cat1"]:checked ~ .pictures div label[for="cat1"] img,
+input[id="cat2"]:checked ~ .pictures div label[for="cat2"] img,
+input[id="cat3"]:checked ~ .pictures div label[for="cat3"] img,
+input[id="dog4"]:checked ~ .pictures div label[for="dog4"] img{
     border:4px solid #ff9800;
     border-radius: 4px;
 }

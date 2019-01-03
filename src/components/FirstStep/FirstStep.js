@@ -2,19 +2,15 @@ import React, { Component } from 'react';
 import './style.css'
 
 class FirstStep extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            name: props.name,
-            email: props.email,
+    state={
+            name: this.props.name,
+            email: this.props.email,
             error: ''
-        }
-    }
+          }
 
     isValidMail = e => {
-        this.setState({email: e.target.value});
-        if(e.target.value.indexOf( '@' )) {
-            this.props.setMail(e.target.value);
+        if(this.state.email.indexOf( '@' ) !== -1) {            
+            this.props.setMail(this.state.email);
             this.setState({error: ''});
         }
         else{
